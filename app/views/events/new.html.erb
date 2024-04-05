@@ -1,0 +1,31 @@
+<%= render "shared/header" %>
+
+<h1>Create an event</h1>
+
+<%= form_with model: @event do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, placeholder: "My awesome event!" %>
+  <% @event&.errors&.full_messages_for(:name)&.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <br>
+  <%= form.label :date %>
+  <%= form.datetime_field :date %>
+  <% @event&.errors&.full_messages_for(:date)&.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <br>
+  <%= form.label :location %>
+  <%= form.text_field :location, placeholder: "My place!" %>
+  <% @event&.errors&.full_messages_for(:location)&.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <br>
+  <%= form.label :private %>
+  <%= form.check_box :private %>
+  <% @event&.errors&.full_messages_for(:private)&.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <br>
+  <%= form.submit "Create event" %>
+<% end %>
