@@ -1,5 +1,23 @@
 <%= render "shared/header" %>
 
 <h1><%= current_user.username %></h1>
+<%= link_to "Create event", new_event_path %>
+<br><br>
+<p>Created events:</p>
+<%= render "shared/events", events: current_user.events, empty_state_message: "You haven't created any events, yet" %>
 
-<%= render "shared/events", events: current_user.events, empty_state_message: "You haven't created any events, yet..." %>
+<br>
+
+<p>Attended events:</p>
+<%= render "shared/events",
+  events: current_user.attended_events.where(date: ..Time.now),
+  empty_state_message: "You haven't attended any events, yet..."
+%>
+
+<br>
+
+<p>Upcoming registered events:</p>
+<%= render "shared/events",
+  events: current_user.attended_events.where(date: Time.now..),
+  empty_state_message: "You haven't registered to upcoming events, yet..."
+%>

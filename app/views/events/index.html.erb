@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 
 <h1>Events</h1>
-
-<%= render "shared/events", events: @events, empty_state_message: "There aren't any events, yet..." %>
+<%= link_to "Create event", new_event_path %>
+<br><br>
+<%= render "shared/events", events: @events, empty_state_message: "There aren't any events, yet...", can_create: true %>
