@@ -10,7 +10,7 @@
 
 <p>Attended events:</p>
 <%= render "shared/events",
-  events: current_user.attended_events.where(date: ..Time.now),
+  events: current_user.attended_events.past,
   empty_state_message: "You haven't attended any events, yet..."
 %>
 
@@ -18,6 +18,6 @@
 
 <p>Upcoming registered events:</p>
 <%= render "shared/events",
-  events: current_user.attended_events.where(date: Time.now..),
+  events: current_user.attended_events.upcoming,
   empty_state_message: "You haven't registered to upcoming events, yet..."
 %>

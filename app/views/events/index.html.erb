@@ -3,4 +3,8 @@
 <h1>Events</h1>
 <%= link_to "Create event", new_event_path %>
 <br><br>
-<%= render "shared/events", events: @events, empty_state_message: "There aren't any events, yet...", can_create: true %>
+<p>Past events:</p>
+<%= render "shared/events", events: @events.past, empty_state_message: "There aren't any past events :O" %>
+<br>
+<p>Upcoming events:</p>
+<%= render "shared/events", events: @events.upcoming, empty_state_message: "There aren't any upcoming events, yet..." %>
