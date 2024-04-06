@@ -5,4 +5,9 @@
   <p>By: <%= @event.creator.username %></p>
   <p><%= @event.date %></p>
   <p><%= @event.location %></p>
+  <% if @event.attendees.include? current_user %>
+    <p>You're already registered for this event!</p>
+  <% else %>
+    <%= button_to("Attend", attendance_path(event_id: @event.id), method: :post) %>
+  <% end %>
 </div>
