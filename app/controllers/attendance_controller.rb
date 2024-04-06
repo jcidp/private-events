@@ -8,4 +8,14 @@ class AttendanceController < ApplicationController
     end
     redirect_to @event
   end
+
+  def destroy
+    @event = Event.find(params[:event_id])
+    if @event.attendees.delete(current_user)
+      flash[:success] = "You unregistered successfully"
+    else
+      flash[:error] = "Oh no! You couldn't unregister :("
+    end
+    redirect_to @event
+  end 
 end

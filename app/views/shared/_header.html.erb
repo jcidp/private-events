@@ -1,9 +1,12 @@
 <header class="header">
-  <% if user_signed_in? %>
-    <%= link_to current_user.username, users_path %>
-    <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= button_to "Signup", new_user_registration_path, method: :get %>
-    <%= button_to "Login", new_user_session_path %>
-  <% end %>
+  <h1><%= link_to "Events", root_path %></h1>
+  <div class="session-control">
+    <% if user_signed_in? %>
+      <%= link_to current_user.username, users_path %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Signup", new_user_registration_path, method: :get %>
+      <%= button_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
 </header>

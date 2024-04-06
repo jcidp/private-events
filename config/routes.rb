@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show, :new, :create]
 
   post "/attendance", to: "attendance#create"
+  delete "/attendance", to: "attendance#destroy"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

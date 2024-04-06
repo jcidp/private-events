@@ -1,12 +1,13 @@
 <%= render "shared/header" %>
 
 <div class="event-details">
-  <h1><%= @event.name %></h1>
+  <h2><%= @event.name %></h2>
   <p>By: <%= @event.creator.username %></p>
   <p><%= @event.date %></p>
   <p><%= @event.location %></p>
   <% if @event.attendees.include? current_user %>
     <p>You're already registered for this event!</p>
+    <%= button_to("Unregister", attendance_path(event_id: @event.id), method: :delete) %>
   <% else %>
     <%= button_to("Attend", attendance_path(event_id: @event.id), method: :post) %>
   <% end %>
