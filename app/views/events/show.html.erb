@@ -1,8 +1,14 @@
 <%= render "shared/header" %>
 
 <div class="event-details">
-  <h2><%= @event.name %></h2>
-  <p>By: <%= @event.creator.username %></p>
+  <div class="event-name" style="display: flex; align-items: center; gap: 1rem">
+    <h2><%= @event.name %></h2>
+    <% if @event.creator == current_user %>
+      <%= link_to "Edit", edit_event_path %>
+      <%= button_to "Delete", @event, method: :delete %>
+    <% end %>
+  </div>
+  <p style="margin-top: 0">By: <%= @event.creator.username %></p>
   <p><%= @event.date %></p>
   <p><%= @event.location %></p>
   <% if @event.attendees.include? current_user %>
