@@ -1,4 +1,6 @@
 class AttendanceController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @event = Event.find(params[:event_id])
     if @event.attendees << current_user
