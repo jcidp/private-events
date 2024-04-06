@@ -11,3 +11,16 @@
     <%= button_to("Attend", attendance_path(event_id: @event.id), method: :post) %>
   <% end %>
 </div>
+
+<div class="attendees">
+  <% if @event.attendees.any? %>
+    <p>Attendees:</p>
+    <ul>
+      <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.username %></li>
+      <% end %>  
+    </ul>
+  <% else %>
+    <p>No attendes registered, yet...</p>
+  <% end %>
+</div>
